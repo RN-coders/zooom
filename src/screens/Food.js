@@ -6,11 +6,12 @@ import { addToBasket, selectItemWithId } from '../redux/basketSlice'
 
 const Food = ({ navigation, route }) => {
     const { item } = route.params
+   
     const dispatch = useDispatch()
-        const items = useSelector(state => selectItemWithId( state, id ))
+    const items = useSelector(state => selectItemWithId( state ))
     
-    const addItemToBasket = () => {
-        dispatch( addToBasket({ item }) )
+    const addItemToBasket = ({item}) => {
+        dispatch(addToBasket({item}))
     }
     
 
@@ -53,11 +54,11 @@ const Food = ({ navigation, route }) => {
                     </Text>
                     {/* increase and decrease the item */}
                     <View className='flex-row w-20 justify-between'>
-                        <TouchableOpacity onPress={ addItemToBasket }>
+                        <TouchableOpacity onPress={() => addItemToBasket({item})}>
                             <FontAwesome
-                                name='plus-circle' 
+                                name='plus-circle'
                                 size={ 30 } 
-                                color='#fff' 
+                                color='#fff'
                             />
                         </TouchableOpacity>
 
